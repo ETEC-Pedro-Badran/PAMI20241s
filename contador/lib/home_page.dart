@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  var vezes = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -9,8 +16,20 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Material App Bar'),
       ),
-      body: const Center(
-        child: Text('Hello World'),
+      body: Center(
+        child: Column(
+          children: [
+            Text("Você clicou $vezes vezes!"),
+            ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    vezes++;
+                  });
+                  print(vezes);
+                },
+                child: Text("Clique aqui!"))
+          ],
+        ),
       ),
     );
   }
