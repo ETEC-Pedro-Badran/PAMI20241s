@@ -9,20 +9,34 @@ class Home extends StatelessWidget {
     return Scaffold(
       appBar: appBar(),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        padding:
+            const EdgeInsets.only(left: 20, right: 10, top: 25, bottom: 20),
+        child: Column(
           children: [
-            Text(
-              "Conta",
-              style: GoogleFonts.nunito(
-                  fontSize: 20,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w600),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Conta",
+                  style: GoogleFonts.nunito(
+                      fontSize: 20,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w600),
+                ),
+                const Icon(
+                  Icons.arrow_forward_ios_rounded,
+                  size: 13,
+                )
+              ],
             ),
-            const Icon(
-              Icons.arrow_forward_ios_rounded,
-              size: 13,
+            Row(
+              children: [
+                Text(
+                  "R\$ 845,20",
+                  style: GoogleFonts.workSans(
+                      fontSize: 25, fontWeight: FontWeight.w600),
+                ),
+              ],
             )
           ],
         ),
