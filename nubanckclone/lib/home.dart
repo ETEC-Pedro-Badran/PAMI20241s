@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -8,9 +6,33 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const space = 20.0;
     return Scaffold(
-        appBar: AppBar(
+      appBar: appBar(),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "Conta",
+              style: GoogleFonts.nunito(
+                  fontSize: 20,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w600),
+            ),
+            const Icon(
+              Icons.arrow_forward_ios_rounded,
+              size: 13,
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  appBar() {
+    const space = 20.0;
+    return AppBar(
       title: const CircleAvatar(
         backgroundColor: Colors.white12,
         child: Icon(
@@ -51,12 +73,11 @@ class Home extends StatelessWidget {
                 child: Text(
                   "Olá, Ricardo",
                   style: GoogleFonts.nunito(
-                      color: Colors.white,
-                      fontFeatures: [FontFeature.swash(1)]),
+                      color: Colors.white, fontWeight: FontWeight.w600),
                 ),
               ),
             ],
           )),
-    ));
+    );
   }
 }
