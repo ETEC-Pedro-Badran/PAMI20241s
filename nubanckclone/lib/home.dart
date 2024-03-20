@@ -102,6 +102,34 @@ class Home extends StatelessWidget {
   opcoesConta() {
     return SizedBox(
       height: 150,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: [
+          opcao(Icons.pix_outlined, "Pix"),
+          opcao(Icons.payment, "Pagar"),
+          opcao(Icons.track_changes, "Transferir"),
+          opcao(Icons.all_inclusive, "Depositar"),
+        ],
+      ),
+    );
+  }
+
+  opcao(IconData icone, String texto) {
+    return Column(
+      children: [
+        Container(
+            width: 50,
+            height: 50,
+            decoration: BoxDecoration(
+              color: Colors.grey[300],
+              shape: BoxShape.circle,
+            ),
+            child: Icon(icone)),
+        Text(
+          texto,
+          style: GoogleFonts.nunito(fontWeight: FontWeight.w700),
+        )
+      ],
     );
   }
 }
