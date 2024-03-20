@@ -1,0 +1,94 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "contador",
+            "cwd": "contador",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "contador (profile mode)",
+            "cwd": "contador",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "contador (release mode)",
+            "cwd": "contador",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "exemplolista",
+            "cwd": "exemplolista",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "exemplolista (profile mode)",
+            "cwd": "exemplolista",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "exemplolista (release mode)",
+            "cwd": "exemplolista",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "nubanckclone",
+            "cwd": "nubanckclone",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "nubanckclone (profile mode)",
+            "cwd": "nubanckclone",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "nubanckclone (release mode)",
+            "cwd": "nubanckclone",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "olamundo",
+            "cwd": "olamundo",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "olamundo (profile mode)",
+            "cwd": "olamundo",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "olamundo (release mode)",
+            "cwd": "olamundo",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "tst",
+            "cwd": "tst",
+            "request": "launch",
+            "type": "dart"
+        }
+    ]
+}
