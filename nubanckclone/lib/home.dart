@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -9,7 +10,7 @@ class Home extends StatelessWidget {
     return Scaffold(
         appBar: appBar(),
         body: Column(
-          children: [saldoConta(), opcoesConta()],
+          children: [saldoConta(), opcoesConta(), meusCartoes()],
         ));
   }
 
@@ -100,36 +101,76 @@ class Home extends StatelessWidget {
   }
 
   opcoesConta() {
-    return SizedBox(
-      height: 150,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        children: [
-          opcao(Icons.pix_outlined, "Pix"),
-          opcao(Icons.payment, "Pagar"),
-          opcao(Icons.track_changes, "Transferir"),
-          opcao(Icons.all_inclusive, "Depositar"),
-        ],
+    return Padding(
+      padding: const EdgeInsets.only(left: 20.0),
+      child: SizedBox(
+        height: 150,
+        child: ListView(
+          scrollDirection: Axis.horizontal,
+          children: [
+            opcao(Icons.pix_outlined, "Pix"),
+            opcao(Icons.payment, "Pagar"),
+            opcao(Icons.track_changes, "Transferir"),
+            opcao(Icons.all_inclusive, "Depositar"),
+            opcao(Icons.inventory, "Investir"),
+            opcao(Icons.security_rounded, "Seguro"),
+          ],
+        ),
       ),
     );
   }
 
   opcao(IconData icone, String texto) {
-    return Column(
-      children: [
-        Container(
-            width: 50,
-            height: 50,
-            decoration: BoxDecoration(
-              color: Colors.grey[300],
-              shape: BoxShape.circle,
-            ),
-            child: Icon(icone)),
-        Text(
-          texto,
-          style: GoogleFonts.nunito(fontWeight: FontWeight.w700),
-        )
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(right: 12.0),
+      child: Column(
+        children: [
+          Container(
+              width: 60,
+              height: 60,
+              decoration: BoxDecoration(
+                color: Colors.grey[300],
+                shape: BoxShape.circle,
+              ),
+              child: Icon(icone)),
+          Text(
+            texto,
+            style: GoogleFonts.nunito(fontWeight: FontWeight.w700),
+          )
+        ],
+      ),
+    );
+  }
+
+  meusCartoes() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 20),
+      child: Row(
+        children: [
+          Container(
+              height: 45,
+              width: 450,
+              decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                  borderRadius: BorderRadius.circular(8)),
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 12,
+                  ),
+                  Icon(CupertinoIcons.creditcard),
+                  SizedBox(
+                    width: 12,
+                  ),
+                  Text(
+                    "Meus cartões",
+                    style: GoogleFonts.nunito(
+                        fontSize: 15, fontWeight: FontWeight.w700),
+                  )
+                ],
+              )),
+        ],
+      ),
     );
   }
 }
