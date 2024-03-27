@@ -10,7 +10,7 @@ class Home extends StatelessWidget {
     return Scaffold(
         appBar: appBar(),
         body: Column(
-          children: [saldoConta(), opcoesConta(), meusCartoes()],
+          children: [saldoConta(), opcoesConta(), meusCartoes(), aviso()],
         ));
   }
 
@@ -104,7 +104,7 @@ class Home extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 20.0),
       child: SizedBox(
-        height: 150,
+        height: 110,
         child: ListView(
           scrollDirection: Axis.horizontal,
           children: [
@@ -148,8 +148,8 @@ class Home extends StatelessWidget {
       child: Row(
         children: [
           Container(
-              height: 45,
-              width: 450,
+              height: 50,
+              width: 300,
               decoration: BoxDecoration(
                   color: Colors.grey[300],
                   borderRadius: BorderRadius.circular(8)),
@@ -170,6 +170,37 @@ class Home extends StatelessWidget {
                 ],
               )),
         ],
+      ),
+    );
+  }
+
+  aviso() {
+    return Padding(
+        padding: const EdgeInsets.only(left: 20, top: 20),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              cartao("Você tem R\$1000,00\ndisponível para empréstimo."),
+              cartao("Conquiste sua casa própria.\nConheça nossas propostas."),
+            ],
+          ),
+        ));
+  }
+
+  cartao(String texto) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 12.0),
+      child: Container(
+        decoration: BoxDecoration(
+            color: Colors.grey[300], borderRadius: BorderRadius.circular(8)),
+        height: 100,
+        width: 300,
+        child: Center(
+            child: Text(
+          texto,
+          style: GoogleFonts.nunito(fontSize: 16, fontWeight: FontWeight.w600),
+        )),
       ),
     );
   }
