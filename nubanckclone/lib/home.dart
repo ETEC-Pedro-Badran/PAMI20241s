@@ -9,8 +9,16 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: appBar(),
-        body: Column(
-          children: [saldoConta(), opcoesConta(), meusCartoes(), aviso()],
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              saldoConta(),
+              opcoesConta(),
+              meusCartoes(),
+              aviso(),
+              saldoCartao()
+            ],
+          ),
         ));
   }
 
@@ -201,6 +209,68 @@ class Home extends StatelessWidget {
           texto,
           style: GoogleFonts.nunito(fontSize: 16, fontWeight: FontWeight.w600),
         )),
+      ),
+    );
+  }
+
+  saldoCartao() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 20, right: 10, top: 25, bottom: 20),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Icon(Icons.credit_card),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Cartão de Crédito",
+                style: GoogleFonts.nunito(
+                    fontSize: 20,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w600),
+              ),
+              const Icon(
+                Icons.arrow_forward_ios_rounded,
+                size: 13,
+              )
+            ],
+          ),
+          Row(
+            children: [
+              Text(
+                "Fatura atual",
+                style: GoogleFonts.workSans(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.grey[600]),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Text(
+                "R\$ 845,20",
+                style: GoogleFonts.workSans(
+                    fontSize: 25, fontWeight: FontWeight.w600),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Text(
+                "Limite disponível: R\$806,78",
+                style: GoogleFonts.workSans(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.grey[600]),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
