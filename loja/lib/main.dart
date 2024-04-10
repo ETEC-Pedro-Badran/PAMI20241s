@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loja/registro_usuario.dart';
 
 void main() => runApp(const MyApp());
 
@@ -8,15 +9,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Material App',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Material App Bar'),
-        ),
-        body: const Center(
-          child: Text('Hello World'),
-        ),
-      ),
-    );
+        theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.blue),
+        title: 'Material App',
+        home: RegistroUsuario());
   }
 }
