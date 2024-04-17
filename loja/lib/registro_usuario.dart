@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loja/usuario_form.dart';
 
 class RegistroUsuario extends StatelessWidget {
   const RegistroUsuario({super.key});
@@ -27,6 +28,7 @@ class RegistroUsuario extends StatelessWidget {
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10)),
+                    child: UsuarioForm(),
                   );
                 }),
           ),
