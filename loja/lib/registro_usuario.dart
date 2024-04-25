@@ -28,7 +28,8 @@ class RegistroUsuario extends StatelessWidget {
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10)),
-                    child: UsuarioForm(),
+                    child: const SingleChildScrollView(
+                        child: SizedBox(height: 450, child: UsuarioForm())),
                   );
                 }),
           ),

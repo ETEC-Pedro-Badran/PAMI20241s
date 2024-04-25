@@ -62,9 +62,12 @@ class _UsuarioFormState extends State<UsuarioForm> {
                       },
                       child: const Text("Limpar")),
                   ElevatedButton(
-                      onPressed: () {
+                      onPressed: () async {
                         if (_formKey.currentState!.validate()) {
-                          print("Dados Válidos!");
+                          await showDialog(
+                              context: context,
+                              builder: (context) => dialogConfirmacao());
+                          print("A caixa de dialogo foi fechada");
                         } else {
                           print("Dados incompletos!");
                         }
@@ -75,5 +78,39 @@ class _UsuarioFormState extends State<UsuarioForm> {
             ],
           )),
     );
+  }
+
+  dialogConfirmacao() {
+    return Builder(builder: (context) {
+      return Dialog(
+        child: Padding(
+          padding: EdgeInsets.all(8.0),
+          child: SizedBox(
+            width: 250,
+            height: 170,
+            child: Column(
+              children: [
+                const Icon(
+                  Icons.done,
+                  size: 60,
+                ),
+                const Text(
+                  "Usuário registrado com sucesso!",
+                  style: TextStyle(
+                    fontSize: 24,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                OutlinedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text("OK"))
+              ],
+            ),
+          ),
+        ),
+      );
+    });
   }
 }
