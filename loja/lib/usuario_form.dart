@@ -64,6 +64,8 @@ class _UsuarioFormState extends State<UsuarioForm> {
                   ElevatedButton(
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
+                          _formKey.currentState!.save();
+
                           await showDialog(
                               context: context,
                               builder: (context) => dialogConfirmacao());

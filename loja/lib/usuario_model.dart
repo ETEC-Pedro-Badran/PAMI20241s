@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class Usuario {
   int? id;
   String? nome;
@@ -12,5 +14,19 @@ class Usuario {
 
   bool isValid(String senha) {
     return senha == _senha;
+  }
+
+  String getJson() {
+    final map = {"id": id, "nome": nome, "email": email, "senha": _senha};
+    return jsonEncode(map);
+  }
+
+  factory Usuario.fromJson(String json) {
+    final map = jsonDecode(json);
+    return Usuario(
+        id: map['id'],
+        nome: map['nome'],
+        email: map['email'],
+        senha: map['senha']);
   }
 }
