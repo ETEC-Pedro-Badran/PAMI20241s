@@ -1,8 +1,7 @@
-import 'package:loja/abstract_helper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'usuario_model.dart';
 
-class UsuarioHelper extends AbstractHelper {
+class UsuarioHelper {
   /// Salvar o usuario no armazenamento local chave e valor.
   Future<void> salvar(Usuario usuario) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();

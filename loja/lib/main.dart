@@ -11,6 +11,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.blue),
         title: 'Material App',
-        home: RegistroUsuario());
+        home: const RegistroUsuario());
   }
 }

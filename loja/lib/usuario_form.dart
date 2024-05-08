@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:loja/abstract_helper.dart';
+import 'package:loja/usuario_helper.dart';
 
 class UsuarioForm extends StatefulWidget {
-  final AbstractHelper helper;
+  final UsuarioHelper helper;
   const UsuarioForm({super.key, required this.helper});
 
   @override
