@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:loja/abstract_usuario_helper.dart';
-import 'package:loja/usuario_helper.dart';
 
-class UsuarioForm extends StatefulWidget {
+class LoginForm extends StatefulWidget {
   final AbstractUsuarioHelper helper;
-  const UsuarioForm({super.key, required this.helper});
+  const LoginForm({super.key, required this.helper});
 
   @override
-  State<UsuarioForm> createState() => _UsuarioFormState();
+  State<LoginForm> createState() => _LoginFormState();
 }
 
-class _UsuarioFormState extends State<UsuarioForm> {
+class _LoginFormState extends State<LoginForm> {
   var _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {

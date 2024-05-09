@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:loja/registro_usuario.dart';
+import 'package:loja/login.dart';
 
 void main() => runApp(const MyApp());
 
@@ -11,6 +11,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.blue),
         title: 'Material App',
-        home: const RegistroUsuario());
+        home: const Login());
   }
 }
