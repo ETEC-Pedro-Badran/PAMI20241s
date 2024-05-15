@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:loja/abstract_usuario_helper.dart';
-import 'package:loja/usuario_helper.dart';
 
 class UsuarioForm extends StatefulWidget {
   final AbstractUsuarioHelper helper;

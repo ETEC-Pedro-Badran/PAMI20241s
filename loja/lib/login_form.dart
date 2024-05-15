@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:loja/abstract_usuario_helper.dart';
+import 'package:loja/registro_usuario.dart';
 
 class LoginForm extends StatefulWidget {
   final AbstractUsuarioHelper helper;
@@ -23,13 +24,6 @@ class _LoginFormState extends State<LoginForm> {
             children: [
               TextFormField(
                 decoration: const InputDecoration(
-                    label: Text("Nome"), border: OutlineInputBorder()),
-                validator: (value) => value?.isEmpty ?? true
-                    ? "Nome do usuário deve ser informado!"
-                    : null,
-              ),
-              TextFormField(
-                decoration: const InputDecoration(
                     label: Text("E-mail"), border: OutlineInputBorder()),
                 validator: (value) =>
                     (value?.contains("@") ?? false) && (value?.length ?? 0) > 3
@@ -46,18 +40,16 @@ class _LoginFormState extends State<LoginForm> {
                 onChanged: (value) => senha = value,
                 obscureText: true,
               ),
-              TextFormField(
-                decoration: const InputDecoration(
-                  label: Text("Confirmação da senha"),
-                  border: OutlineInputBorder(),
-                ),
-                validator: (value) =>
-                    value == senha ? null : 'Senhas não conferem!',
-                obscureText: true,
-              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
+                  ElevatedButton(
+                      onPressed: () {
+                        //Navega para uma rota. Essa rota é capaz de carregar uma tela
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => RegistroUsuario()));
+                      },
+                      child: Text("Registrar-se")),
                   ElevatedButton(
                       onPressed: () {
                         _formKey.currentState!.reset();
@@ -76,7 +68,7 @@ class _LoginFormState extends State<LoginForm> {
                           print("Dados incompletos!");
                         }
                       },
-                      child: const Text("Salvar"))
+                      child: const Text("Entrar"))
                 ],
               )
             ],
