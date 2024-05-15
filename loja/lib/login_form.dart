@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:loja/abstract_usuario_helper.dart';
 import 'package:loja/registro_usuario.dart';
+import 'package:loja/usuario_helper.dart';
 
 class LoginForm extends StatefulWidget {
   final AbstractUsuarioHelper helper;
@@ -15,6 +16,8 @@ class _LoginFormState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
     String? senha;
+    String? email;
+
     return Padding(
       padding: const EdgeInsets.only(top: 60.0, left: 20, right: 20),
       child: Form(
@@ -29,6 +32,7 @@ class _LoginFormState extends State<LoginForm> {
                     (value?.contains("@") ?? false) && (value?.length ?? 0) > 3
                         ? null
                         : 'Informe um e-mail válido!',
+                onSaved: (newValue) => email = newValue, //<<<<<<<<<<<<<
               ),
               TextFormField(
                 decoration: const InputDecoration(
@@ -38,6 +42,7 @@ class _LoginFormState extends State<LoginForm> {
                         ? null
                         : 'Senha deve ter no mínimo 3 caracteres!',
                 onChanged: (value) => senha = value,
+                onSaved: (newValue) => senha = newValue, //<<<<<<<<<<<<
                 obscureText: true,
               ),
               Row(
@@ -60,10 +65,16 @@ class _LoginFormState extends State<LoginForm> {
                         if (_formKey.currentState!.validate()) {
                           _formKey.currentState!.save();
 
-                          await showDialog(
-                              context: context,
-                              builder: (context) => dialogConfirmacao());
-                          print("A caixa de dialogo foi fechada");
+                          final usuario = await UsuarioHelper().recuperar();
+                          if (usuario != null &&
+                              usuario.email == email &&
+                              usuario.isValid(senha ?? "")) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text("Usuário Válido!")));
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(content: Text("Usuário inválido!")));
+                          }
                         } else {
                           print("Dados incompletos!");
                         }
