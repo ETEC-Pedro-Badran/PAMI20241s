@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:loja/usuario_form.dart';
 
 import 'usuario_helper.dart';
@@ -8,6 +11,8 @@ class RegistroUsuario extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    XFile? imageFile; // <<<<<<<<<<<<<<<
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -52,18 +57,41 @@ class RegistroUsuario extends StatelessWidget {
           Positioned(
             bottom: (MediaQuery.of(context).size.height * 0.7) - 44,
             width: (MediaQuery.of(context).size.width) - 50,
-            child: Container(
-              height: 90,
-              width: 90,
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.white,
-                  boxShadow: kElevationToShadow[3]),
-              child: Icon(
-                Icons.person,
-                size: 70,
-              ),
-            ),
+            child: StatefulBuilder(builder: (context, setState) {
+              return GestureDetector(
+                onTap: () async {
+                  imageFile = await ImagePicker().pickImage(
+                    source: ImageSource.camera,
+                  );
+                  setState(() {});
+                },
+                child: Container(
+                  height: 90,
+                  width: 90,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.white,
+                      boxShadow: kElevationToShadow[3]),
+                  child: imageFile == null
+                      ? const Icon(
+                          Icons.person,
+                          size: 70,
+                        )
+                      : FutureBuilder(
+                          future: imageFile!.readAsBytes(),
+                          builder: (context, snapshot) => snapshot.data == null
+                              ? const CircularProgressIndicator(
+                                  valueColor:
+                                      AlwaysStoppedAnimation(Colors.blue),
+                                )
+                              : Center(
+                                  child: CircleAvatar(
+                                      radius: 70,
+                                      backgroundImage:
+                                          MemoryImage(snapshot.data!)))),
+                ),
+              );
+            }),
           )
         ],
       ),
