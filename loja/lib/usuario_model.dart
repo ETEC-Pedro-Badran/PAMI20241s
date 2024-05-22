@@ -17,7 +17,13 @@ class Usuario {
   }
 
   String getJson() {
-    final map = {"id": id, "nome": nome, "email": email, "senha": _senha};
+    final map = {
+      "id": id,
+      "nome": nome,
+      "email": email,
+      "senha": _senha,
+      "foto": foto
+    };
     return jsonEncode(map);
   }
 
@@ -27,6 +33,7 @@ class Usuario {
         id: map['id'],
         nome: map['nome'],
         email: map['email'],
-        senha: map['senha']);
+        senha: map['senha'],
+        foto: map['foto']);
   }
 }

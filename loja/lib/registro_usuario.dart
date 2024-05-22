@@ -1,9 +1,11 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:loja/usuario_form.dart';
 
+import 'registro_store.dart';
 import 'usuario_helper.dart';
 
 class RegistroUsuario extends StatelessWidget {
@@ -11,8 +13,7 @@ class RegistroUsuario extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    XFile? imageFile; // <<<<<<<<<<<<<<<
-
+    final store = RegistroStore();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -40,6 +41,7 @@ class RegistroUsuario extends StatelessWidget {
                             height: 450,
                             child: UsuarioForm(
                               helper: UsuarioHelper(),
+                              store: store,
                             ))),
                   );
                 }),
@@ -60,9 +62,15 @@ class RegistroUsuario extends StatelessWidget {
             child: StatefulBuilder(builder: (context, setState) {
               return GestureDetector(
                 onTap: () async {
-                  imageFile = await ImagePicker().pickImage(
+                  //obtem o arquivo com a imagem
+                  final imageFile = await ImagePicker().pickImage(
                     source: ImageSource.camera,
                   );
+                  //carrega os bytes do arquivo e converte em String de base64
+                  store.usuario!.foto =
+                      base64Encode((await imageFile?.readAsBytes())!.toList());
+                  print(store.usuario!.foto);
+
                   setState(() {});
                 },
                 child: Container(
@@ -72,23 +80,16 @@ class RegistroUsuario extends StatelessWidget {
                       shape: BoxShape.circle,
                       color: Colors.white,
                       boxShadow: kElevationToShadow[3]),
-                  child: imageFile == null
+                  child: store.usuario?.foto == null
                       ? const Icon(
                           Icons.person,
                           size: 70,
                         )
-                      : FutureBuilder(
-                          future: imageFile!.readAsBytes(),
-                          builder: (context, snapshot) => snapshot.data == null
-                              ? const CircularProgressIndicator(
-                                  valueColor:
-                                      AlwaysStoppedAnimation(Colors.blue),
-                                )
-                              : Center(
-                                  child: CircleAvatar(
-                                      radius: 70,
-                                      backgroundImage:
-                                          MemoryImage(snapshot.data!)))),
+                      : Center(
+                          child: CircleAvatar(
+                              radius: 70,
+                              backgroundImage: MemoryImage(
+                                  base64Decode(store.usuario!.foto!)))),
                 ),
               );
             }),
