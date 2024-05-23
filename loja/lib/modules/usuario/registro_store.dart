@@ -1,4 +1,4 @@
-import 'package:loja/usuario_model.dart';
+import 'package:loja/domain/usuario_model.dart';
 
 class RegistroStore {
   Usuario? usuario;

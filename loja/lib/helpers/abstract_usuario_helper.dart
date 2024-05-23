@@ -1,4 +1,4 @@
-import 'usuario_model.dart';
+import 'package:loja/domain/usuario_model.dart';
 
 abstract class AbstractUsuarioHelper {
   Future<void> salvar(Usuario usuario);

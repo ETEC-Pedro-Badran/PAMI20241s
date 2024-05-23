@@ -1,6 +1,6 @@
-import 'package:loja/abstract_usuario_helper.dart';
+import 'package:loja/domain/usuario_model.dart';
+import 'package:loja/helpers/abstract_usuario_helper.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'usuario_model.dart';
 
 class UsuarioHelper extends AbstractUsuarioHelper {
   /// Salvar o usuario no armazenamento local chave e valor.

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:loja/login_form.dart';
-import 'package:loja/usuario_helper.dart';
+import 'package:loja/helpers/usuario_helper.dart';
+import 'package:loja/modules/login/login_form.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});

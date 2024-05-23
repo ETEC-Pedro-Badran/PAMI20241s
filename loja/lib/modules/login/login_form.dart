@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:loja/abstract_usuario_helper.dart';
-import 'package:loja/registro_usuario.dart';
-import 'package:loja/usuario_helper.dart';
+import 'package:loja/helpers/abstract_usuario_helper.dart';
+import 'package:loja/helpers/usuario_helper.dart';
+import 'package:loja/usuario/registro_usuario.dart';
 
 class LoginForm extends StatefulWidget {
   final AbstractUsuarioHelper helper;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:loja/abstract_usuario_helper.dart';
-import 'package:loja/registro_store.dart';
-import 'package:loja/usuario_helper.dart';
-import 'package:loja/usuario_model.dart';
+
+import 'package:loja/helpers/abstract_usuario_helper.dart';
+import 'package:loja/helpers/usuario_helper.dart';
+import 'package:loja/modules/usuario/registro_store.dart';
 
 class UsuarioForm extends StatefulWidget {
   final AbstractUsuarioHelper helper;
@@ -18,7 +18,7 @@ class _UsuarioFormState extends State<UsuarioForm> {
   @override
   Widget build(BuildContext context) {
     //String? senha;
-    Usuario usuario = Usuario();
+    //Usuario usuario = Usuario();
     return Padding(
       padding: const EdgeInsets.only(top: 60.0, left: 20, right: 20),
       child: Form(
@@ -32,7 +32,7 @@ class _UsuarioFormState extends State<UsuarioForm> {
                 validator: (value) => value?.isEmpty ?? true
                     ? "Nome do usuário deve ser informado!"
                     : null,
-                onSaved: (newValue) => usuario.nome = newValue,
+                onSaved: (newValue) => widget.store.usuario?.nome = newValue,
               ),
               TextFormField(
                 decoration: const InputDecoration(
@@ -41,7 +41,7 @@ class _UsuarioFormState extends State<UsuarioForm> {
                     (value?.contains("@") ?? false) && (value?.length ?? 0) > 3
                         ? null
                         : 'Informe um e-mail válido!',
-                onSaved: (newValue) => usuario.email = newValue,
+                onSaved: (newValue) => widget.store.usuario?.email = newValue,
               ),
               TextFormField(
                 decoration: const InputDecoration(
@@ -50,8 +50,8 @@ class _UsuarioFormState extends State<UsuarioForm> {
                     (value?.isNotEmpty ?? false) && (value?.length ?? 0) > 3
                         ? null
                         : 'Senha deve ter no mínimo 3 caracteres!',
-                onChanged: (value) => usuario.senha = value,
-                onSaved: (newValue) => usuario.senha = newValue!,
+                onChanged: (value) => widget.store.usuario?.senha = value,
+                onSaved: (newValue) => widget.store.usuario?.senha = newValue!,
                 obscureText: true,
               ),
               TextFormField(
@@ -59,7 +59,7 @@ class _UsuarioFormState extends State<UsuarioForm> {
                   label: Text("Confirmação da senha"),
                   border: OutlineInputBorder(),
                 ),
-                validator: (value) => usuario.isValid(value ?? "")
+                validator: (value) => widget.store.usuario!.isValid(value ?? "")
                     ? null
                     : 'Senhas não conferem!',
                 obscureText: true,
@@ -78,7 +78,7 @@ class _UsuarioFormState extends State<UsuarioForm> {
                           _formKey.currentState!.save();
 
                           try {
-                            await UsuarioHelper().salvar(usuario);
+                            await UsuarioHelper().salvar(widget.store.usuario!);
                           } catch (e) {
                             await showDialog(
                                 context: context,

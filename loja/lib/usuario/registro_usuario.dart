@@ -1,12 +1,10 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:loja/usuario_form.dart';
-
-import 'registro_store.dart';
-import 'usuario_helper.dart';
+import 'package:loja/helpers/usuario_helper.dart';
+import 'package:loja/modules/usuario/registro_store.dart';
+import 'package:loja/modules/usuario/usuario_form.dart';
 
 class RegistroUsuario extends StatelessWidget {
   const RegistroUsuario({super.key});
